@@ -1,7 +1,30 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import Link from "next/link";
 
 export default function Home() {
+  const padding = (num: number, digit: number) => {
+    const pad = "0".repeat(digit)
+    return (pad + num).slice(-digit)
+  }
+
+  const length = 13
+  const linkRows = []
+  for (let i = 0; i < length; i++) {
+    const id = padding(i + 1, 2)
+    const tableRow = (
+        <tr key={`tr-${id}`}>
+          <td>
+            <Link href={"/base/" + id}>{id}</Link>
+          </td>
+          <td key={`sampleList${id}`}>
+            <Link href={"/sample/" + id}>{id}</Link>
+          </td>
+        </tr>
+    )
+    linkRows.push(tableRow)
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -28,7 +51,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.center}>
+      <div>
+        <br />
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -37,6 +61,25 @@ export default function Home() {
           height={37}
           priority
         />
+        <br />
+        <br />
+      </div>
+
+      <div>
+        <p>
+          <Link href="/base/00">Go Test</Link>
+        </p>
+        <table>
+          <thead>
+          <tr>
+            <th>Base</th>
+            <th>Sample</th>
+          </tr>
+          </thead>
+          <tbody>
+          {linkRows}
+          </tbody>
+        </table>
       </div>
 
       <div className={styles.grid}>
