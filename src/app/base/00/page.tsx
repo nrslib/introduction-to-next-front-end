@@ -3,7 +3,7 @@
 import React, {useState} from "react";
 import Main from "@/components/Layout/Main";
 
-export default function Index() {
+export default function Page() {
     const [data, setData] = useState("")
     const [message, setMessage] = useState("")
 

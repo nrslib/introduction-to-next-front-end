@@ -1,7 +1,7 @@
 import React from 'react'
 import Main from "@/components/Layout/Main";
 
-export default function Index() {
+export default function Page() {
     return (
         <Main>
             <h1>Index</h1>
